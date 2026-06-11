@@ -1,3 +1,27 @@
-body {
-  background: brown;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+#root {
+  min-height: 100vh;
+}
+
+#root {
+  background: lightgray;
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app {
+  flex: 1;
+  max-width: 95rem;
+  max-height: 50rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
 }

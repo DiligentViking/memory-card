@@ -1,5 +1,5 @@
 import '../styles/Gameboard.css';
 
 export function Gameboard() {
-  return <h1>gameboard</h1>;
+  return <div className='gameboard'></div>;
 }
