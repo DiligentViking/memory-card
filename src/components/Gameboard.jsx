@@ -1,5 +1,9 @@
 import '../styles/Gameboard.css';
 
-export function Gameboard() {
-  return <div className='gameboard'></div>;
+export function Gameboard({ incrementScore }) {
+  return (
+    <div className='gameboard'>
+      <button onClick={incrementScore}>Increment Score</button>
+    </div>
+  );
 }
