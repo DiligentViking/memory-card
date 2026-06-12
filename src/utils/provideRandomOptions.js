@@ -1,5 +1,6 @@
 export function provideRandomOptions(
   array,
+  guaranteedItem,
   onlyUnique = true,
   outputLength = array.length,
 ) {
@@ -27,6 +28,14 @@ export function provideRandomOptions(
     }
 
     outputArray.push(randomItem);
+  }
+
+  if (!outputArray.includes(guaranteedItem)) {
+    outputArray.splice(
+      Math.floor(Math.random() * outputArray.length),
+      1,
+      guaranteedItem,
+    );
   }
 
   return outputArray;

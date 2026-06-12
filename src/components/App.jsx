@@ -28,12 +28,14 @@ const POKE_CHOICES = [
   'sawsbuck',
   'lugia',
   'latios',
+  'furret',
 ];
 const HIGHEST_SCORE = POKE_CHOICES.length;
 const NUM_POKES_SHOWN = 6;
 
 export default function App() {
   const [clickedPokes, setClickedPokes] = useState([]);
+  const [remainingPokes, setRemainingPokes] = useState([...POKE_CHOICES]);
   const [bestScore, setBestScore] = useState(0);
 
   const currentScore = clickedPokes.length;
@@ -43,17 +45,18 @@ export default function App() {
     bestScore,
   };
 
-  const pokeArray = provideRandomOptions(POKE_CHOICES, true, NUM_POKES_SHOWN);
+  const guaranteedItem =
+    remainingPokes[Math.floor(Math.random() * remainingPokes.length)]; // TODO: Make helper
+  const pokeArray = provideRandomOptions(
+    POKE_CHOICES,
+    guaranteedItem,
+    true,
+    NUM_POKES_SHOWN,
+  );
 
   if (currentScore === HIGHEST_SCORE) alert('YOU WIN!');
 
   // There is an edge case if only previously selected pokemon are shown.
-  //
-  // SOLUTION 1:
-  // See if each poke in pokeArray is in clickedPokes
-  // If all of them are, then redo pokeArray
-  //
-  // SOLUTION 2:
   // Store a remainingPokes in memory
   // Get a random poke from remainingPokes and put that in provideRandomOptions
   // In provideRandomOptions, splice a random poke from the array and put the guaranteedItem in its place
@@ -63,6 +66,7 @@ export default function App() {
     const alreadyClicked = clickedPokes.includes(poke);
     if (!alreadyClicked) {
       setClickedPokes([...clickedPokes, poke]);
+      setRemainingPokes(remainingPokes.filter((p) => p !== poke));
     } else {
       if (currentScore > bestScore) {
         setBestScore(currentScore);
