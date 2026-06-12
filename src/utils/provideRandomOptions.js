@@ -1,3 +1,5 @@
+import { getRandomIndex } from '../utils/arrayRandomHelpers.js';
+
 export function provideRandomOptions(
   array,
   guaranteedItem,
@@ -19,11 +21,11 @@ export function provideRandomOptions(
           );
           return;
         }
-        randomIndex = Math.floor(Math.random() * remainingOptions.length);
+        randomIndex = getRandomIndex(remainingOptions);
         randomItem = remainingOptions.splice(randomIndex, 1)[0];
       } while (outputArray.includes(randomItem));
     } else {
-      randomIndex = Math.floor(Math.random() * array.length);
+      randomIndex = getRandomIndex(array);
       randomItem = array[randomIndex];
     }
 
@@ -31,11 +33,7 @@ export function provideRandomOptions(
   }
 
   if (!outputArray.includes(guaranteedItem)) {
-    outputArray.splice(
-      Math.floor(Math.random() * outputArray.length),
-      1,
-      guaranteedItem,
-    );
+    outputArray.splice(getRandomIndex(outputArray), 1, guaranteedItem);
   }
 
   return outputArray;

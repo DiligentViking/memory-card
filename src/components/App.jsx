@@ -1,6 +1,7 @@
 import '../styles/App.css';
 import { useState } from 'react';
 import { provideRandomOptions } from '../utils/provideRandomOptions.js';
+import { getRandomItem } from '../utils/arrayRandomHelpers.js';
 
 import { Scoreboard } from './Scoreboard.jsx';
 import { Gameboard } from './Gameboard.jsx';
@@ -45,8 +46,7 @@ export default function App() {
     bestScore,
   };
 
-  const guaranteedItem =
-    remainingPokes[Math.floor(Math.random() * remainingPokes.length)]; // TODO: Make helper
+  const guaranteedItem = getRandomItem(remainingPokes);
   const pokeArray = provideRandomOptions(
     POKE_CHOICES,
     guaranteedItem,
