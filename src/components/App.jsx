@@ -54,12 +54,18 @@ export default function App() {
     NUM_POKES_SHOWN,
   );
 
-  if (currentScore === HIGHEST_SCORE) alert('YOU WIN!');
+  if (currentScore === HIGHEST_SCORE) {
+    alert('YOU WIN!');
+    endRound();
+  }
 
-  // There is an edge case if only previously selected pokemon are shown.
-  // Store a remainingPokes in memory
-  // Get a random poke from remainingPokes and put that in provideRandomOptions
-  // In provideRandomOptions, splice a random poke from the array and put the guaranteedItem in its place
+  function endRound() {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+    }
+    setClickedPokes([]);
+    setRemainingPokes([...POKE_CHOICES]);
+  }
 
   function handlePokeClick(e) {
     const poke = e.target.dataset.pokeName;
@@ -68,10 +74,7 @@ export default function App() {
       setClickedPokes([...clickedPokes, poke]);
       setRemainingPokes(remainingPokes.filter((p) => p !== poke));
     } else {
-      if (currentScore > bestScore) {
-        setBestScore(currentScore);
-      }
-      setClickedPokes([]);
+      endRound();
     }
   }
 
