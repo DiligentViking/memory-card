@@ -5,7 +5,9 @@ import { provideRandomOptions } from '../utils/provideRandomOptions.js';
 import { Scoreboard } from './Scoreboard.jsx';
 import { Gameboard } from './Gameboard.jsx';
 
-const POKECHOICES = ['surskit', 'raltz', 'latias', 'morpeko'];
+const POKE_CHOICES = ['surskit', 'raltz', 'latias', 'morpeko'];
+const HIGHEST_SCORE = POKE_CHOICES.length;
+const NUM_POKES_SHOWN = 6;
 
 export default function App() {
   const [clickedPokes, setClickedPokes] = useState([]);
@@ -18,11 +20,10 @@ export default function App() {
     bestScore,
   };
 
-  const pokeArray = provideRandomOptions(POKECHOICES);
+  const pokeArray = provideRandomOptions(POKE_CHOICES);
 
   function handlePokeClick(e) {
     const poke = e.target.dataset.pokeName;
-
     const alreadyClicked = clickedPokes.includes(poke);
     if (!alreadyClicked) {
       setClickedPokes([...clickedPokes, poke]);
@@ -33,6 +34,8 @@ export default function App() {
       setClickedPokes([]);
     }
   }
+
+  if (currentScore === HIGHEST_SCORE) alert('YOU WIN!');
 
   return (
     <div className='app'>
