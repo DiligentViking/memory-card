@@ -9,3 +9,7 @@
   margin: 2rem;
   padding: 1rem;
 }
+
+.poke-card[data-dev-highlight='true'] {
+  outline: 2px solid red;
+}

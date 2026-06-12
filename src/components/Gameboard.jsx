@@ -1,6 +1,6 @@
 import '../styles/Gameboard.css';
 
-export function Gameboard({ pokeArray, handlePokeClick }) {
+export function Gameboard({ pokeArray, handlePokeClick, clickedPokes }) {
   return (
     <div className='gameboard'>
       {pokeArray.map((poke) => (
@@ -9,6 +9,7 @@ export function Gameboard({ pokeArray, handlePokeClick }) {
           className='poke-card'
           onClick={handlePokeClick}
           data-poke-name={poke}
+          data-dev-highlight={clickedPokes && clickedPokes.includes(poke)}
         >
           {poke}
         </button>
