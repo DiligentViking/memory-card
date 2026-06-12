@@ -1,25 +1,25 @@
 import '../styles/Gameboard.css';
 
-export function Gameboard({ handlePokeClick }) {
+export function Gameboard({ pokeArray, handlePokeClick }) {
   return (
     <div className='gameboard'>
-      <button onClick={handlePokeClick} data-poke-id='1'>
-        Pokemon 1
+      <button onClick={handlePokeClick} data-poke-name={pokeArray[0]}>
+        {pokeArray[0]}
       </button>
       <br />
       <br />
-      <button onClick={handlePokeClick} data-poke-id='2'>
-        Pokemon 2
+      <button onClick={handlePokeClick} data-poke-name={pokeArray[1]}>
+        {pokeArray[1]}
       </button>
       <br />
       <br />
-      <button onClick={handlePokeClick} data-poke-id='3'>
-        Pokemon 3
+      <button onClick={handlePokeClick} data-poke-name={pokeArray[2]}>
+        {pokeArray[2]}
       </button>
       <br />
       <br />
-      <button onClick={handlePokeClick} data-poke-id='4'>
-        Pokemon 4
+      <button onClick={handlePokeClick} data-poke-name={pokeArray[3]}>
+        {pokeArray[3]}
       </button>
       <br />
       <br />

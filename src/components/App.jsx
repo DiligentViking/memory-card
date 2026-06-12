@@ -38,6 +38,8 @@ function provideRandomOptions(
   return outputArray;
 }
 
+const POKECHOICES = ['surskit', 'raltz', 'latias', 'morpeko'];
+
 export default function App() {
   const [clickedPokes, setClickedPokes] = useState([]);
   const [bestScore, setBestScore] = useState(0);
@@ -49,12 +51,14 @@ export default function App() {
     bestScore,
   };
 
-  function handlePokeClick(e) {
-    const pokeId = e.target.dataset.pokeId;
+  const pokeArray = provideRandomOptions(POKECHOICES);
 
-    const alreadyClicked = clickedPokes.includes(pokeId);
+  function handlePokeClick(e) {
+    const poke = e.target.dataset.pokeName;
+
+    const alreadyClicked = clickedPokes.includes(poke);
     if (!alreadyClicked) {
-      setClickedPokes([...clickedPokes, pokeId]);
+      setClickedPokes([...clickedPokes, poke]);
     } else {
       if (currentScore > bestScore) {
         setBestScore(currentScore);
@@ -66,7 +70,7 @@ export default function App() {
   return (
     <div className='app'>
       <Scoreboard data={data} />
-      <Gameboard handlePokeClick={handlePokeClick} />
+      <Gameboard pokeArray={pokeArray} handlePokeClick={handlePokeClick} />
     </div>
   );
 }
