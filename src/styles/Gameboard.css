@@ -4,3 +4,8 @@
   flex: 2;
   height: 32rem;
 }
+
+.poke-card {
+  margin: 2rem;
+  padding: 1rem;
+}
