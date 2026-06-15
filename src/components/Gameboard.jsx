@@ -1,6 +1,11 @@
 import '../styles/Gameboard.css';
 
-export function Gameboard({ pokeArray, handlePokeClick, clickedPokes }) {
+export function Gameboard({
+  pokeArray,
+  createImgUrl,
+  handlePokeClick,
+  clickedPokes,
+}) {
   return (
     <div className='gameboard'>
       {pokeArray.map((poke) => (
@@ -11,6 +16,7 @@ export function Gameboard({ pokeArray, handlePokeClick, clickedPokes }) {
           data-poke-name={poke}
           data-dev-highlight={clickedPokes && clickedPokes.includes(poke)}
         >
+          <img src={createImgUrl(poke)} alt='' />
           {poke}
         </button>
       ))}

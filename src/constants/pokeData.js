@@ -28,8 +28,13 @@ console.log(pokeData);
 function addPoke(name, id, displayName = null) {
   pokeData[name] = {
     id,
-    displayName: displayName ?? toCapitalCase(name),
+    displayName: displayName ?? toCapitalCase(name), // Can abstract further, turn camel case into separate words
   };
+}
+
+export function createImgUrl(pokeName) {
+  const pokeId = pokeData[pokeName].id;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/brilliant-diamond-shining-pearl/${pokeId}.png`;
 }
 
 export const POKE_CHOICES = Object.keys(pokeData);

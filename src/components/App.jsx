@@ -1,7 +1,7 @@
 import '../styles/App.css';
 import { useState } from 'react';
 
-import { POKE_CHOICES } from '../constants/pokeData.js';
+import { POKE_CHOICES, createImgUrl } from '../constants/pokeData.js';
 import { provideRandomOptions } from '../utils/provideRandomOptions.js';
 import { getRandomItem } from '../utils/arrayRandomHelpers.js';
 
@@ -62,6 +62,7 @@ export default function App() {
       <Scoreboard data={data} />
       <Gameboard
         pokeArray={pokeArray}
+        createImgUrl={createImgUrl}
         handlePokeClick={handlePokeClick}
         clickedPokes={DEVMODE ? clickedPokes : null}
       />
