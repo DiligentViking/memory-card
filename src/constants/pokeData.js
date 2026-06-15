@@ -34,7 +34,7 @@ function addPoke(name, id, displayName = null) {
 
 export function createImgUrl(pokeName) {
   const pokeId = pokeData[pokeName].id;
-  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-viii/brilliant-diamond-shining-pearl/${pokeId}.png`;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeId}.png`;
 }
 
 export const POKE_CHOICES = Object.keys(pokeData);

@@ -2,6 +2,10 @@ Notes:
 
 -I would have loved to use the brilliant-diamond-shining-pearl generation of pokemon images but not all of the pokemon have that!
 -So I am sticking with the pixalated default.
+-No!  I must find an API that supports non-pixalated images!
+-Found it!
+-Maybe I can even use the animated (pixalated tho) versions!
+-And I can even use the backs!
 
 -The current code does not even directly use pokeapi or any fetching, for that matter.  It just has img src attributes.
 
@@ -11,7 +15,19 @@ Notes:
 -ideas for random other fad things to put in there for fun: ash ketchum, terrako, battle-tested guardian, revali, a squid kid
 -and maybe forget the stock stuff fetched from online, and provide ai-generated images of your own original (pokemon) characters!
 
-__________
-Todo:
+-Add round count. (maybe connect to localstorage, too)
+
+-Add artwork type switching: official, svg, 3d, animated.
+  // return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokeId}.gif`;
+  // return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokeId}.png`;
+  // return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokeId}.svg`;
+  // return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeId}.png`;
+-Then add a toggle to view the backs of the pokemon!
+-And shiny!  So it is basically a pokemon artwork viewer that doubles up as a fun little game.
+-Maybe as a harder difficulty setting, pokemon are 50/50 shiny.
+-Or just a shiny mode.
+-Remember to have cool effects!
+
+-Maybe a feature where you can make your own list of pokemon!
 
 -Add round count. (maybe connect to localstorage, too)
