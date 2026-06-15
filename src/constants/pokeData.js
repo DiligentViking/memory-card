@@ -1,95 +1,35 @@
-const pokeData = {
-  surskit: {
-    displayName: '',
-    urlName: '',
-  },
-  raltz: {
-    displayName: '',
-    urlName: '',
-  },
-  latias: {
-    displayName: '',
-    urlName: '',
-  },
-  latios: {
-    displayName: '',
-    urlName: '',
-  },
-  megaLatios: {
-    displayName: 'Mega Latios',
-    urlName: 'latios-mega',
-  },
-  morpeko: {
-    displayName: '',
-    urlName: 'morpeko-hangry',
-  },
-  leopard: {
-    displayName: 'Mega Latios',
-    urlName: 'latios-mega',
-  },
-  purloin: {
-    displayName: 'Mega Latios',
-    urlName: 'latios-mega',
-  },
-  zygarde: {
-    displayName: '',
-    urlName: 'zygarde-complete',
-  },
-  bulbasaur: {
-    displayName: '',
-    urlName: '',
-  },
-  deoxys: {
-    displayName: '',
-    urlName: 'deoxys-attack',
-  },
-  eevee: {
-    displayName: '',
-    urlName: '',
-  },
-  cinderace: {
-    displayName: '',
-    urlName: '',
-  },
-  umbreon: {
-    displayName: '',
-    urlName: '',
-  },
-  jolteon: {
-    displayName: '',
-    urlName: '',
-  },
-  alolanVulpix: {
-    displayName: 'Alolan Vulpix',
-    urlName: 'vulpix-alola',
-  },
-  darkrai: {
-    displayName: '',
-    urlName: '',
-  },
-  sawsbuck: {
-    displayName: '',
-    urlName: '',
-  },
-  furret: {
-    displayName: '',
-    urlName: '',
-  },
-  lugia: {
-    displayName: '',
-    urlName: '',
-  },
-};
+import { toCapitalCase } from '../utils/stringHelpers.js';
+
+const pokeData = {};
+
+addPoke('surskit');
+addPoke('raltz');
+addPoke('latias');
+addPoke('latios');
+addPoke('megaLatios', 'Mega Latios', 'latios-mega');
+addPoke('morpeko', null, 'morpeko-hangry');
+addPoke('leopard');
+addPoke('purloin');
+addPoke('zygarde', null, 'zygarde-complete');
+addPoke('bulbasaur');
+addPoke('deoxys');
+addPoke('eevee');
+addPoke('cinderace');
+addPoke('umbreon');
+addPoke('jolteon');
+addPoke('alolanVulpix', 'Alolan Vulpix', 'vulpix-alola');
+addPoke('darkrai');
+addPoke('sawsbuck');
+addPoke('furret');
+addPoke('lugia');
+
+console.log(pokeData);
 
 function addPoke(name, displayName = null, urlName = null) {
-  pokeData;
+  pokeData[name] = {
+    displayName: displayName ?? toCapitalCase(name),
+    urlName: urlName ?? name, // May use in future for pokeapi.co calls
+  };
 }
 
 export const POKE_CHOICES = Object.keys(pokeData);
-
-// An object with poke names as keys
-// The values will be objects with urls and aliases and stuff
-// The data is exported
-
-// an empty displayName makes it use the key capitalized
-// an empty urlName makes it use the key
