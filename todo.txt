@@ -1,0 +1,17 @@
+Notes:
+
+-I would have loved to use the brilliant-diamond-shining-pearl generation of pokemon images but not all of the pokemon have that!
+-So I am sticking with the pixalated default.
+
+-The current code does not even directly use pokeapi or any fetching, for that matter.  It just has img src attributes.
+
+-The current app will not support duplicate cards.
+
+-Future Idea:
+-ideas for random other fad things to put in there for fun: ash ketchum, terrako, battle-tested guardian, revali, a squid kid
+-and maybe forget the stock stuff fetched from online, and provide ai-generated images of your own original (pokemon) characters!
+
+__________
+Todo:
+
+-Add round count. (maybe connect to localstorage, too)
