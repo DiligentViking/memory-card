@@ -1,5 +1,7 @@
 import '../styles/App.css';
 import { useState } from 'react';
+
+import { POKE_CHOICES } from '../constants/pokeData.js';
 import { provideRandomOptions } from '../utils/provideRandomOptions.js';
 import { getRandomItem } from '../utils/arrayRandomHelpers.js';
 
@@ -8,29 +10,6 @@ import { Gameboard } from './Gameboard.jsx';
 
 const DEVMODE = true;
 
-const POKE_CHOICES = [
-  'surskit',
-  'raltz',
-  'latias',
-  'morpeko',
-  'leopard',
-  'purloin',
-  'zygard',
-  'mega latios',
-  'bulbasaur',
-  'deoxys',
-  'eevee',
-  'cinderace',
-  'pikachu',
-  'umbreon',
-  'jolteon',
-  'alolan vulpix',
-  'darkrai',
-  'sawsbuck',
-  'lugia',
-  'latios',
-  'furret',
-];
 const HIGHEST_SCORE = POKE_CHOICES.length;
 const NUM_POKES_SHOWN = 6;
 
