@@ -1,15 +1,8 @@
 Notes:
 
--I would have loved to use the brilliant-diamond-shining-pearl generation of pokemon images but not all of the pokemon have that!
--So I am sticking with the pixalated default.
--No!  I must find an API that supports non-pixalated images!
--Found it!
--Maybe I can even use the animated (pixalated tho) versions!
--And I can even use the backs!
-
 -The current code does not even directly use pokeapi or any fetching, for that matter.  It just has img src attributes.
 
--The current app will not support duplicate cards.
+-The current app will not support duplicate cards (and I don't see a reason why I should have 'em).
 
 -Future Idea:
 -ideas for random other fad things to put in there for fun: ash ketchum, terrako, battle-tested guardian, revali, a squid kid
@@ -31,3 +24,5 @@ Notes:
 -Maybe a feature where you can make your own list of pokemon!
 
 -Add round count. (maybe connect to localstorage, too)
+
+-Timers and count-ups

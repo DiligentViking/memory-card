@@ -19,9 +19,26 @@ body,
 
 .app {
   flex: 1;
-  max-width: 95rem;
+  max-width: 80rem;
   max-height: 50rem;
   display: flex;
   align-items: center;
   gap: 5rem;
+}
+
+@media (max-width: 1000px) {
+  #root {
+    padding: 2.5rem;
+  }
+
+  .app {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    flex-direction: column;
+    /* justify-content: ; */
+  }
 }

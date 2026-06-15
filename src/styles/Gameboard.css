@@ -1,15 +1,39 @@
 .gameboard {
   background: rgb(246, 246, 246);
   border: 1px solid rgb(150, 150, 150);
+  padding: 1rem;
   flex: 2;
-  height: 32rem;
+  max-height: 40rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 1rem;
 }
 
 .poke-card {
-  margin: 2rem;
   padding: 1rem;
 }
 
 .poke-card[data-dev-highlight='true'] {
   outline: 2px solid red;
+}
+
+.poke-card img {
+  height: auto;
+  width: 100%;
+}
+
+@media (max-width: 1000px) {
+  .gameboard {
+    max-height: none;
+    grid-template-columns: repeat(2, minmax(100px, 200px));
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 600px) {
+  .gameboard {
+    grid-template-columns: repeat(2, minmax(100px, 180px));
+  }
 }
