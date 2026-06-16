@@ -49,12 +49,19 @@
   justify-content: space-between;
   gap: 0.6rem;
 
-  animation: card-pop 220ms ease both;
   transition:
     transform 160ms ease,
     box-shadow 160ms ease,
     filter 160ms ease,
     border-color 160ms ease;
+}
+
+.poke-card-pop-a {
+  animation: card-pop-a 220ms ease both;
+}
+
+.poke-card-pop-b {
+  animation: card-pop-b 220ms ease both;
 }
 
 .poke-card::after {
@@ -76,7 +83,7 @@
 }
 
 .poke-card:hover {
-  transform: translateY(-0.35rem) rotate(-1deg);
+  transform: translateY(-0.35rem) rotate(-1deg); /* does not run for some reason */
   border-color: var(--pokemon-yellow);
   filter: brightness(1.04);
   box-shadow:
@@ -158,7 +165,19 @@
   animation-delay: 150ms;
 }
 
-@keyframes card-pop {
+@keyframes card-pop-a {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes card-pop-b {
   from {
     opacity: 0;
     transform: translateY(0.5rem) scale(0.96);

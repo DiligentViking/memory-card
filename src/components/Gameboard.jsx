@@ -21,13 +21,17 @@ export function Gameboard({
   createImgUrl,
   handlePokeClick,
   clickedPokes,
+  animationTurn,
 }) {
+  const animationClass =
+    animationTurn % 2 === 0 ? 'poke-card-pop-a' : 'poke-card-pop-b';
+
   return (
     <div className='gameboard'>
       {pokeArray.map((poke) => (
         <button
           key={poke}
-          className='poke-card'
+          className={`poke-card ${animationClass}`}
           onClick={handlePokeClick}
           data-poke-name={poke}
           data-dev-highlight={clickedPokes && clickedPokes.includes(poke)}
