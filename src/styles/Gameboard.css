@@ -1,5 +1,5 @@
 .gameboard {
-  flex: 2;
+  flex: 3;
   min-width: 0;
   padding: clamp(1rem, 2.5vw, 1.5rem);
   border: 4px solid var(--pokemon-navy);
@@ -22,13 +22,13 @@
     0 1.25rem 1.75rem rgba(0, 0, 0, 0.16);
 
   display: grid;
-  grid-template-columns: repeat(3, minmax(8rem, 1fr));
-  gap: clamp(0.8rem, 2vw, 1.15rem);
+  grid-template-columns: repeat(3, minmax(11rem, 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
 }
 
 .poke-card {
   position: relative;
-  min-height: 12rem;
+  min-height: 15rem;
   overflow: hidden;
   padding: 1rem;
   border: 3px solid var(--pokemon-blue);
@@ -127,7 +127,7 @@
 .poke-card img {
   position: relative;
   z-index: 1;
-  width: min(100%, 8.5rem);
+  width: min(100%, 11rem);
   aspect-ratio: 1;
   object-fit: contain;
   pointer-events: none;
@@ -191,24 +191,28 @@
 @media (max-width: 1000px) {
   .gameboard {
     width: 100%;
-    grid-template-columns: repeat(3, minmax(8rem, 1fr));
+    grid-template-columns: repeat(3, minmax(10rem, 1fr));
   }
 }
 
 @media (max-width: 760px) {
   .gameboard {
-    grid-template-columns: repeat(2, minmax(8rem, 1fr));
+    grid-template-columns: repeat(2, minmax(9rem, 1fr));
   }
 }
 
 @media (max-width: 420px) {
   .gameboard {
-    grid-template-columns: repeat(2, minmax(7rem, 1fr));
+    grid-template-columns: repeat(2, minmax(7.5rem, 1fr));
     padding: 0.8rem;
   }
 
   .poke-card {
-    min-height: 10.25rem;
+    min-height: 11.25rem;
     padding: 0.75rem;
+  }
+
+  .poke-card img {
+    width: min(100%, 7.5rem);
   }
 }
