@@ -63,10 +63,10 @@ export default function App() {
   return (
     <div className='app'>
       <header className='app-header'>
-        <p className='eyebrow'>Pokédex Memory Challenge</p>
+        {/* <p className='eyebrow'>Pokédex Memory Challenge</p> */}
         <h1>Gotta click 'em all – once!</h1>
         <p className='game-instructions'>
-          Click each Pokémon only one time. Pick a repeat and your score resets!
+          Remember your picks. The board changes after every click.
         </p>
       </header>
 
