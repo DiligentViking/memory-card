@@ -23,6 +23,7 @@ export default function App() {
   const data = {
     currentScore,
     bestScore,
+    highestScore: HIGHEST_SCORE,
   };
 
   const guaranteedItem = getRandomItem(remainingPokes);
@@ -42,6 +43,7 @@ export default function App() {
     if (currentScore > bestScore) {
       setBestScore(currentScore);
     }
+
     setClickedPokes([]);
     setRemainingPokes([...POKE_CHOICES]);
   }
@@ -49,6 +51,7 @@ export default function App() {
   function handlePokeClick(e) {
     const poke = e.target.dataset.pokeName;
     const alreadyClicked = clickedPokes.includes(poke);
+
     if (!alreadyClicked) {
       setClickedPokes([...clickedPokes, poke]);
       setRemainingPokes(remainingPokes.filter((p) => p !== poke));
@@ -59,7 +62,14 @@ export default function App() {
 
   return (
     <div className='app'>
-      <h1>Gotta click 'em all – once!</h1>
+      <header className='app-header'>
+        <p className='eyebrow'>Pokédex Memory Challenge</p>
+        <h1>Gotta click 'em all – once!</h1>
+        <p className='game-instructions'>
+          Click each Pokémon only one time. Pick a repeat and your score resets!
+        </p>
+      </header>
+
       <div className='game-container'>
         <Scoreboard data={data} />
         <Gameboard

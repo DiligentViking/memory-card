@@ -34,3 +34,5 @@ Notes:
 -And you can drag them from the browser and drop them onto your computer (turn pointer-events to normal)
 
 -Add favicon
+
+-Maybe "Trainer Memory Trainer"

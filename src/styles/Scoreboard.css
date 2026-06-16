@@ -1,7 +1,134 @@
 .scoreboard {
-  background: rgb(246, 246, 246);
-  border: 1px solid rgb(100, 100, 100);
+  position: relative;
   flex: 1;
+  min-width: 16rem;
   max-width: 20rem;
-  height: 20rem;
+  overflow: hidden;
+  padding: 1.35rem;
+  border: 4px solid var(--pokemon-yellow);
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 36%),
+    linear-gradient(180deg, var(--pokemon-navy), #0f172a);
+  color: white;
+  box-shadow:
+    inset 0 0 1rem rgba(255, 255, 255, 0.08),
+    0 0.8rem 0 rgba(0, 0, 0, 0.2),
+    0 1.25rem 1.5rem rgba(0, 0, 0, 0.18);
+}
+
+.scoreboard::after {
+  content: '';
+  position: absolute;
+  right: -3rem;
+  bottom: -3rem;
+  width: 9rem;
+  aspect-ratio: 1;
+  border: 1rem solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+}
+
+.scoreboard-light {
+  width: 1.15rem;
+  aspect-ratio: 1;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow:
+    0 0 0 0.25rem rgba(255, 255, 255, 0.16),
+    0 0 1rem #22c55e;
+}
+
+.scoreboard h2 {
+  position: relative;
+  z-index: 1;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: var(--pokemon-yellow);
+  font-size: 1.8rem;
+  line-height: 1;
+  text-shadow:
+    2px 2px 0 var(--pokemon-blue),
+    0 0.25rem 0 rgba(0, 0, 0, 0.25);
+}
+
+.score-list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.35rem;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.9rem;
+  border: 3px solid #111827;
+  border-radius: 0.85rem;
+  background: #d9f99d;
+  color: #1f2937;
+  box-shadow:
+    inset 0 0.2rem 0 rgba(255, 255, 255, 0.6),
+    0 0.25rem 0 rgba(0, 0, 0, 0.28);
+}
+
+.score-row span {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.score-row strong {
+  font-size: 1.65rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+.current-score {
+  background: #d9f99d;
+}
+
+.best-score {
+  background: #bfdbfe;
+}
+
+.total-score {
+  background: #fde68a;
+}
+
+.scoreboard-tip {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
+  padding: 0.85rem;
+  border: 2px dashed rgba(255, 255, 255, 0.35);
+  border-radius: 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+@media (max-width: 1000px) {
+  .scoreboard {
+    width: 100%;
+    max-width: none;
+  }
+
+  .score-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .scoreboard-tip {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .score-list {
+    grid-template-columns: 1fr;
+  }
 }

@@ -2,14 +2,17 @@ import '../styles/Gameboard.css';
 
 function createNameFromCamelCase(pokeName) {
   let output = pokeName.charAt(0).toUpperCase();
+
   for (let i = 1; i < pokeName.length; i++) {
     const char = pokeName.charAt(i);
+
     if (char === char.toUpperCase()) {
       output += ` ${char.toUpperCase()}`;
     } else {
       output += char;
     }
   }
+
   return output;
 }
 
@@ -30,7 +33,9 @@ export function Gameboard({
           data-dev-highlight={clickedPokes && clickedPokes.includes(poke)}
         >
           <img src={createImgUrl(poke)} alt='' />
-          {createNameFromCamelCase(poke)}
+          <span className='poke-card-name'>
+            {createNameFromCamelCase(poke)}
+          </span>
         </button>
       ))}
     </div>
