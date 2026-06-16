@@ -59,13 +59,16 @@ export default function App() {
 
   return (
     <div className='app'>
-      <Scoreboard data={data} />
-      <Gameboard
-        pokeArray={pokeArray}
-        createImgUrl={createImgUrl}
-        handlePokeClick={handlePokeClick}
-        clickedPokes={DEVMODE ? clickedPokes : null}
-      />
+      <h1>Gotta click 'em all – once!</h1>
+      <div className='game-container'>
+        <Scoreboard data={data} />
+        <Gameboard
+          pokeArray={pokeArray}
+          createImgUrl={createImgUrl}
+          handlePokeClick={handlePokeClick}
+          clickedPokes={DEVMODE ? clickedPokes : null}
+        />
+      </div>
     </div>
   );
 }

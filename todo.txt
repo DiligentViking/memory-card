@@ -32,3 +32,5 @@ Notes:
 
 -Have a "copy artwork" mode, where you can click on pokemon to copy it to clipboard.
 -And you can drag them from the browser and drop them onto your computer (turn pointer-events to normal)
+
+-Add favicon

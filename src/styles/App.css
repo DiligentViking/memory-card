@@ -21,6 +21,17 @@ body,
   flex: 1;
   max-width: 80rem;
   max-height: 50rem;
+  position: relative;
+}
+
+h1 {
+  position: absolute;
+  top: -4rem;
+  width: 100%;
+  text-align: center;
+}
+
+.game-container {
   display: flex;
   align-items: center;
   gap: 5rem;
@@ -31,13 +42,18 @@ body,
     padding: 2.5rem;
   }
 
-  .app {
+  .game-container {
     gap: 2.5rem;
   }
 }
 
 @media (max-width: 600px) {
-  .app {
+  h1 {
+    position: static;
+    margin-bottom: 2rem;
+  }
+
+  .game-container {
     flex-direction: column;
     /* justify-content: ; */
   }
