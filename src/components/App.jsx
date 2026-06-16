@@ -8,7 +8,7 @@ import { getRandomItem } from '../utils/arrayRandomHelpers.js';
 import { Scoreboard } from './Scoreboard.jsx';
 import { Gameboard } from './Gameboard.jsx';
 
-const DEVMODE = true;
+const DEVMODE = false;
 
 const HIGHEST_SCORE = POKE_CHOICES.length;
 const NUM_POKES_SHOWN = 6;

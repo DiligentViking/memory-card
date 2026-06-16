@@ -21,8 +21,14 @@ Notes:
 -Or just a shiny mode.
 -Remember to have cool effects!
 
+-and a toggle to turn all pokemon to the right. you can do it with just scaleX(-1)! (and of course have a cool transition with it)
+-or maybe mixed? (but nah the lighting is all top-left)
+
 -Maybe a feature where you can make your own list of pokemon!
 
 -Add round count. (maybe connect to localstorage, too)
 
 -Timers and count-ups
+
+-Have a "copy artwork" mode, where you can click on pokemon to copy it to clipboard.
+-And you can drag them from the browser and drop them onto your computer (turn pointer-events to normal)
