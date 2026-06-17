@@ -17,15 +17,10 @@ export function Scoreboard({ data }) {
           <span>Best</span>
           <strong>{data.bestScore}</strong>
         </div>
-
-        <div className='score-row total-score'>
-          <span>Total</span>
-          <strong>{data.highestScore}</strong>
-        </div>
       </div>
 
       <p className='scoreboard-tip'>
-        Remember your picks. The board changes after every click.
+        There are 19 Pokémon in total. Can you make the very best score?
       </p>
     </aside>
   );

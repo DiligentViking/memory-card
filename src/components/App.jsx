@@ -17,6 +17,7 @@ export default function App() {
   const [clickedPokes, setClickedPokes] = useState([]);
   const [remainingPokes, setRemainingPokes] = useState([...POKE_CHOICES]);
   const [bestScore, setBestScore] = useState(0);
+  const [animationTurn, setAnimationTurn] = useState(0);
 
   const currentScore = clickedPokes.length;
 
@@ -39,6 +40,10 @@ export default function App() {
     endRound();
   }
 
+  function refreshCards() {
+    setAnimationTurn((turn) => turn + 1);
+  }
+
   function endRound() {
     if (currentScore > bestScore) {
       setBestScore(currentScore);
@@ -46,6 +51,7 @@ export default function App() {
 
     setClickedPokes([]);
     setRemainingPokes([...POKE_CHOICES]);
+    refreshCards();
   }
 
   function handlePokeClick(e) {
@@ -55,6 +61,7 @@ export default function App() {
     if (!alreadyClicked) {
       setClickedPokes([...clickedPokes, poke]);
       setRemainingPokes(remainingPokes.filter((p) => p !== poke));
+      refreshCards();
     } else {
       endRound();
     }
@@ -63,10 +70,10 @@ export default function App() {
   return (
     <div className='app'>
       <header className='app-header'>
-        <p className='eyebrow'>Pokédex Memory Challenge</p>
+        {/* <p className='eyebrow'>Pokédex Memory Challenge</p> */}
         <h1>Gotta click 'em all – once!</h1>
         <p className='game-instructions'>
-          Click each Pokémon only one time. Pick a repeat and your score resets!
+          Remember your picks. The board changes after every click.
         </p>
       </header>
 
@@ -77,6 +84,7 @@ export default function App() {
           createImgUrl={createImgUrl}
           handlePokeClick={handlePokeClick}
           clickedPokes={DEVMODE ? clickedPokes : null}
+          animationTurn={animationTurn}
         />
       </div>
     </div>
