@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { POKE_CHOICES, createImgUrl } from '../constants/pokeData.js';
 import { provideRandomOptions } from '../utils/provideRandomOptions.js';
@@ -8,27 +8,26 @@ import { getRandomItem } from '../utils/arrayRandomHelpers.js';
 import { Scoreboard } from './Scoreboard.jsx';
 import { Gameboard } from './Gameboard.jsx';
 
-const DEVMODE = true;
+const DEVMODE = false;
 
 const HIGHEST_SCORE = POKE_CHOICES.length;
 const NUM_POKES_SHOWN = 6;
 
 export default function App() {
-  const [clickedPokes, setClickedPokes] = useState([]);
-  const [remainingPokes, setRemainingPokes] = useState([...POKE_CHOICES]);
-  const [bestScore, setBestScore] = useState(0);
-  const [roundCount, setRoundCount] = useState(0);
+  const [gameState, setGameState] = useState(
+    JSON.parse(localStorage.getItem('gameState')) || {
+      clickedPokes: [],
+      remainingPokes: [...POKE_CHOICES],
+      bestScore: 0,
+      roundCount: 0,
+    },
+  );
+
   const [animationTurn, setAnimationTurn] = useState(0);
 
-  const currentScore = clickedPokes.length;
+  const currentScore = gameState.clickedPokes.length;
 
-  const data = {
-    currentScore,
-    bestScore,
-    roundCount,
-  };
-
-  const guaranteedItem = getRandomItem(remainingPokes);
+  const guaranteedItem = getRandomItem(gameState.remainingPokes);
   const pokeArray = provideRandomOptions(
     POKE_CHOICES,
     guaranteedItem,
@@ -36,30 +35,37 @@ export default function App() {
     NUM_POKES_SHOWN,
   );
 
+  useEffect(() => {
+    localStorage.setItem('gameState', JSON.stringify(gameState));
+  }, [gameState]);
+
   function refreshCards() {
     setAnimationTurn((turn) => turn + 1);
   }
 
   function endRound(finalScore = currentScore) {
-    if (finalScore > bestScore) {
-      setBestScore(finalScore);
-    }
+    const newBest =
+      finalScore > gameState.bestScore ? finalScore : gameState.bestScore;
 
-    setClickedPokes([]);
-    setRemainingPokes([...POKE_CHOICES]);
-    setRoundCount(roundCount + 1);
+    setGameState({
+      ...gameState,
+      clickedPokes: [],
+      remainingPokes: [...POKE_CHOICES],
+      bestScore: newBest,
+      roundCount: gameState.roundCount + 1,
+    });
     refreshCards();
   }
 
   function handlePokeClick(poke) {
-    const alreadyClicked = clickedPokes.includes(poke);
+    const alreadyClicked = gameState.clickedPokes.includes(poke);
 
     if (alreadyClicked) {
       endRound();
       return;
     }
 
-    const nextClickedPokes = [...clickedPokes, poke];
+    const nextClickedPokes = [...gameState.clickedPokes, poke];
     const nextCurrentScore = nextClickedPokes.length;
 
     if (nextCurrentScore === HIGHEST_SCORE) {
@@ -68,8 +74,11 @@ export default function App() {
       return;
     }
 
-    setClickedPokes(nextClickedPokes);
-    setRemainingPokes(remainingPokes.filter((p) => p !== poke));
+    setGameState({
+      ...gameState,
+      clickedPokes: nextClickedPokes,
+      remainingPokes: gameState.remainingPokes.filter((p) => p !== poke),
+    });
     refreshCards();
   }
 
@@ -84,12 +93,16 @@ export default function App() {
       </header>
 
       <div className='game-container'>
-        <Scoreboard data={data} />
+        <Scoreboard
+          currentScore={currentScore}
+          bestScore={gameState.bestScore}
+          roundCount={gameState.roundCount}
+        />
         <Gameboard
           pokeArray={pokeArray}
           createImgUrl={createImgUrl}
           handlePokeClick={handlePokeClick}
-          clickedPokes={DEVMODE ? clickedPokes : null}
+          clickedPokes={DEVMODE ? gameState.clickedPokes : null}
           animationTurn={animationTurn}
         />
       </div>

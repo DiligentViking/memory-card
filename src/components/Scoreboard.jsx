@@ -1,6 +1,6 @@
 import '../styles/Scoreboard.css';
 
-export function Scoreboard({ data }) {
+export function Scoreboard({ currentScore, bestScore, roundCount }) {
   return (
     <aside className='scoreboard'>
       <div className='scoreboard-light' />
@@ -10,17 +10,17 @@ export function Scoreboard({ data }) {
       <div className='score-list'>
         <div className='score-row current-score'>
           <span>Score</span>
-          <strong>{data.currentScore}</strong>
+          <strong>{currentScore}</strong>
         </div>
 
         <div className='score-row best-score'>
           <span>Best</span>
-          <strong>{data.bestScore}</strong>
+          <strong>{bestScore}</strong>
         </div>
 
         <div className='score-row round-count'>
           <span>Rounds</span>
-          <strong>{data.roundCount}</strong>
+          <strong>{roundCount}</strong>
         </div>
       </div>
 
