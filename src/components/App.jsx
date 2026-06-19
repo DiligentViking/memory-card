@@ -35,18 +35,13 @@ export default function App() {
     NUM_POKES_SHOWN,
   );
 
-  if (currentScore === HIGHEST_SCORE) {
-    alert('YOU WIN!');
-    endRound();
-  }
-
   function refreshCards() {
     setAnimationTurn((turn) => turn + 1);
   }
 
-  function endRound() {
-    if (currentScore > bestScore) {
-      setBestScore(currentScore);
+  function endRound(finalScore = currentScore) {
+    if (finalScore > bestScore) {
+      setBestScore(finalScore);
     }
 
     setClickedPokes([]);
@@ -56,13 +51,24 @@ export default function App() {
 
   function handlePokeClick(poke) {
     const alreadyClicked = clickedPokes.includes(poke);
-    if (!alreadyClicked) {
-      setClickedPokes([...clickedPokes, poke]);
-      setRemainingPokes(remainingPokes.filter((p) => p !== poke));
-      refreshCards();
-    } else {
+
+    if (alreadyClicked) {
       endRound();
+      return;
     }
+
+    const nextClickedPokes = [...clickedPokes, poke];
+    const nextCurrentScore = nextClickedPokes.length;
+
+    if (nextCurrentScore === HIGHEST_SCORE) {
+      alert('YOU WIN!');
+      endRound(nextCurrentScore);
+      return;
+    }
+
+    setClickedPokes(nextClickedPokes);
+    setRemainingPokes(remainingPokes.filter((p) => p !== poke));
+    refreshCards();
   }
 
   return (
