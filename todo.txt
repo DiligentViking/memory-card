@@ -36,3 +36,5 @@ Notes:
 -Add favicon
 
 -Maybe "Trainer Memory Trainer"
+
+-A memory card app can really be used for any fave game or show (consider ZK, or Avatar).

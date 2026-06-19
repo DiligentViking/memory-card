@@ -5,7 +5,6 @@ function createNameFromCamelCase(pokeName) {
 
   for (let i = 1; i < pokeName.length; i++) {
     const char = pokeName.charAt(i);
-
     if (char === char.toUpperCase()) {
       output += ` ${char.toUpperCase()}`;
     } else {
@@ -32,8 +31,7 @@ export function Gameboard({
         <button
           key={poke}
           className={`poke-card ${animationClass}`}
-          onClick={handlePokeClick}
-          data-poke-name={poke}
+          onClick={() => handlePokeClick(poke)}
           data-dev-highlight={clickedPokes && clickedPokes.includes(poke)}
         >
           <img src={createImgUrl(poke)} alt='' />

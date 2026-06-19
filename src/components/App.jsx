@@ -8,7 +8,7 @@ import { getRandomItem } from '../utils/arrayRandomHelpers.js';
 import { Scoreboard } from './Scoreboard.jsx';
 import { Gameboard } from './Gameboard.jsx';
 
-const DEVMODE = false;
+const DEVMODE = true;
 
 const HIGHEST_SCORE = POKE_CHOICES.length;
 const NUM_POKES_SHOWN = 6;
@@ -54,10 +54,8 @@ export default function App() {
     refreshCards();
   }
 
-  function handlePokeClick(e) {
-    const poke = e.target.dataset.pokeName;
+  function handlePokeClick(poke) {
     const alreadyClicked = clickedPokes.includes(poke);
-
     if (!alreadyClicked) {
       setClickedPokes([...clickedPokes, poke]);
       setRemainingPokes(remainingPokes.filter((p) => p !== poke));
