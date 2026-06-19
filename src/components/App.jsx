@@ -17,6 +17,7 @@ export default function App() {
   const [clickedPokes, setClickedPokes] = useState([]);
   const [remainingPokes, setRemainingPokes] = useState([...POKE_CHOICES]);
   const [bestScore, setBestScore] = useState(0);
+  const [roundCount, setRoundCount] = useState(0);
   const [animationTurn, setAnimationTurn] = useState(0);
 
   const currentScore = clickedPokes.length;
@@ -24,7 +25,7 @@ export default function App() {
   const data = {
     currentScore,
     bestScore,
-    highestScore: HIGHEST_SCORE,
+    roundCount,
   };
 
   const guaranteedItem = getRandomItem(remainingPokes);
@@ -46,6 +47,7 @@ export default function App() {
 
     setClickedPokes([]);
     setRemainingPokes([...POKE_CHOICES]);
+    setRoundCount(roundCount + 1);
     refreshCards();
   }
 

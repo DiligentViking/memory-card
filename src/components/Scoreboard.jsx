@@ -17,6 +17,11 @@ export function Scoreboard({ data }) {
           <span>Best</span>
           <strong>{data.bestScore}</strong>
         </div>
+
+        <div className='score-row round-count'>
+          <span>Rounds</span>
+          <strong>{data.roundCount}</strong>
+        </div>
       </div>
 
       <p className='scoreboard-tip'>
